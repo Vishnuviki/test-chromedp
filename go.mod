@@ -13,6 +13,3 @@ require (
 	github.com/mailru/easyjson v0.7.7 // indirect
 	golang.org/x/sys v0.16.0 // indirect
 )
-
-
-docker run -d -p 9222:9222 --rm --name headless-shell --shm-size 2G chromedp/headless-shell
