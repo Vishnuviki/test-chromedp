@@ -16,7 +16,13 @@ func main() {
 	// )...)
 	// defer cancel()
 
-	ctx, cancel := chromedp.NewContext(context.Background())
+	dockerUrl := "wss://localhost:9222"
+
+	allocatorContext, cancel := chromedp.NewRemoteAllocator(context.Background(), dockerUrl)
+	defer cancel()
+
+	// create context
+	ctx, cancel := chromedp.NewContext(allocatorContext)
 	defer cancel()
 
 	if err := chromedp.Run(ctx, chromedp.Navigate("https://example.com")); err != nil {
